@@ -1,7 +1,7 @@
 package io.github.com.lafsdev.apigateway.controller;
 
-import io.github.com.lafsdev.apigateway.model.PersonVO;
 import io.github.com.lafsdev.apigateway.services.PersonServices;
+import io.github.com.lafsdev.apigateway.vo.v1.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

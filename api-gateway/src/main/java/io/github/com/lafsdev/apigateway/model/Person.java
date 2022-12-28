@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "person")
-public class PersonVO implements Serializable {
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class PersonVO implements Serializable {
     @Column(nullable = false, length = 6)
     private String gender;
 
-    public PersonVO() {
+    public Person() {
     }
 
     public Long getId() {
@@ -69,13 +69,13 @@ public class PersonVO implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        PersonVO personVO = (PersonVO) o;
+        Person person = (Person) o;
 
-        if (!Objects.equals(id, personVO.id)) return false;
-        if (!Objects.equals(firstName, personVO.firstName)) return false;
-        if (!Objects.equals(lastName, personVO.lastName)) return false;
-        if (!Objects.equals(address, personVO.address)) return false;
-        return Objects.equals(gender, personVO.gender);
+        if (!Objects.equals(id, person.id)) return false;
+        if (!Objects.equals(firstName, person.firstName)) return false;
+        if (!Objects.equals(lastName, person.lastName)) return false;
+        if (!Objects.equals(address, person.address)) return false;
+        return Objects.equals(gender, person.gender);
     }
 
     @Override
