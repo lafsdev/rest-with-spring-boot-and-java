@@ -1,6 +1,6 @@
 package io.github.com.lafsdev.apigateway.controller;
 
-import io.github.com.lafsdev.apigateway.model.Person;
+import io.github.com.lafsdev.apigateway.model.PersonVO;
 import io.github.com.lafsdev.apigateway.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -17,23 +17,23 @@ public class PersonController {
     private PersonServices service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAll() {
+    public List<PersonVO> findAll() {
         return service.findAll();
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable(value = "id") Long id) {
+    public PersonVO findById(@PathVariable(value = "id") Long id) {
         return service.findById(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person create(@RequestBody Person person) {
-        return service.create(person);
+    public PersonVO create(@RequestBody PersonVO personVO) {
+        return service.create(personVO);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person update(@RequestBody Person person) {
-        return service.update(person);
+    public PersonVO update(@RequestBody PersonVO personVO) {
+        return service.update(personVO);
     }
 
     @DeleteMapping(value = "/{id}")

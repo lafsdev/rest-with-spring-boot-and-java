@@ -14,6 +14,7 @@
 	<name>git clone https://github.com/lafsdev/rest-with-spring-boot-and-java.git</name>
 	<properties>
 		<java.version>19</java.version>
+		<dozer.version>6.5.2</dozer.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,6 +30,12 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.dozermapper</groupId>
+			<artifactId>dozer-core</artifactId>
+			<version>${dozer.version}</version>
 		</dependency>
 
 		<dependency>

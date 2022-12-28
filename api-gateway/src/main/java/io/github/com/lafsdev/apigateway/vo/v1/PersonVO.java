@@ -1,27 +1,17 @@
-package io.github.com.lafsdev.apigateway.model;
-
-import jakarta.persistence.*;
+package io.github.com.lafsdev.apigateway.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable {
+public class PersonVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name", nullable = false, length = 80)
     private String firstName;
-    @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
-    @Column(nullable = false, length = 100)
     private String address;
-    @Column(nullable = false, length = 6)
     private String gender;
 
-    public Person() {
+    public PersonVO() {
     }
 
     public Long getId() {
@@ -69,7 +59,7 @@ public class Person implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Person person = (Person) o;
+        PersonVO person = (PersonVO) o;
 
         if (!Objects.equals(id, person.id)) return false;
         if (!Objects.equals(firstName, person.firstName)) return false;
