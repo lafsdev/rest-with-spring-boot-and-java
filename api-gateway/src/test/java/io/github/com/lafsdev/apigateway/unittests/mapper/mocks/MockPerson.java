@@ -1,7 +1,7 @@
 package io.github.com.lafsdev.apigateway.unittests.mapper.mocks;
 
 import io.github.com.lafsdev.apigateway.model.Person;
-import io.github.com.lafsdev.apigateway.vo.v1.PersonVO;
+import io.github.com.lafsdev.apigateway.data.vo.v1.PersonVO;
 
 import java.util.ArrayList;
 import java.util.List;

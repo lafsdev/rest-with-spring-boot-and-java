@@ -6,7 +6,7 @@ import java.util.List;
 
 import io.github.com.lafsdev.apigateway.mapper.DozerMapper;
 import io.github.com.lafsdev.apigateway.model.Person;
-import io.github.com.lafsdev.apigateway.vo.v1.PersonVO;
+import io.github.com.lafsdev.apigateway.data.vo.v1.PersonVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

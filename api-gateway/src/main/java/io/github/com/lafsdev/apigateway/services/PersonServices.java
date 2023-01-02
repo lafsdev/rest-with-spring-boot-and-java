@@ -4,7 +4,7 @@ import io.github.com.lafsdev.apigateway.exception.ResourceNotFoundException;
 import io.github.com.lafsdev.apigateway.mapper.DozerMapper;
 import io.github.com.lafsdev.apigateway.model.Person;
 import io.github.com.lafsdev.apigateway.repositories.PersonRepository;
-import io.github.com.lafsdev.apigateway.vo.v1.PersonVO;
+import io.github.com.lafsdev.apigateway.data.vo.v1.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package io.github.com.lafsdev.apigateway.vo.v1;
+package io.github.com.lafsdev.apigateway.data.vo.v1;
 
 import java.io.Serializable;
 
