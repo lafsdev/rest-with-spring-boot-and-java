@@ -1,7 +1,9 @@
 package io.github.com.lafsdev.apigateway.services;
 
+import io.github.com.lafsdev.apigateway.data.vo.v2.PersonVOV2;
 import io.github.com.lafsdev.apigateway.exception.ResourceNotFoundException;
 import io.github.com.lafsdev.apigateway.mapper.DozerMapper;
+import io.github.com.lafsdev.apigateway.mapper.custom.PersonMapper;
 import io.github.com.lafsdev.apigateway.model.Person;
 import io.github.com.lafsdev.apigateway.repositories.PersonRepository;
 import io.github.com.lafsdev.apigateway.data.vo.v1.PersonVO;
@@ -19,6 +21,9 @@ public class PersonServices {
 
     @Autowired
     PersonRepository repository;
+
+    @Autowired
+    PersonMapper mapper;
 
     public List<PersonVO> findAll() {
 
@@ -41,6 +46,14 @@ public class PersonServices {
         logger.info("Creating one person!");
         var entity = DozerMapper.parseObject(person, Person.class);
         var vo =  DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+        return vo;
+    }
+
+    public PersonVOV2 createV2(PersonVOV2 person) {
+
+        logger.info("Creating one person with V2!");
+        var entity = mapper.convertVoTOEntity(person);
+        var vo =  mapper.convertEntityToVo(repository.save(entity));
         return vo;
     }
 
