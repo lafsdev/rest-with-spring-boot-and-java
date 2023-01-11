@@ -1,20 +1,20 @@
 package io.github.com.lafsdev.apigateway.services;
 
 import io.github.com.lafsdev.apigateway.controller.PersonController;
-import io.github.com.lafsdev.apigateway.data.vo.v2.PersonVOV2;
+import io.github.com.lafsdev.apigateway.data.vo.v1.PersonVO;
+import io.github.com.lafsdev.apigateway.exception.RequiredObjectIsNullException;
 import io.github.com.lafsdev.apigateway.exception.ResourceNotFoundException;
 import io.github.com.lafsdev.apigateway.mapper.DozerMapper;
-import io.github.com.lafsdev.apigateway.mapper.custom.PersonMapper;
 import io.github.com.lafsdev.apigateway.model.Person;
 import io.github.com.lafsdev.apigateway.repositories.PersonRepository;
-import io.github.com.lafsdev.apigateway.data.vo.v1.PersonVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 
 @Service
@@ -30,9 +30,9 @@ public class PersonServices {
         logger.info("Finding all people!");
 
         var persons = DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
-
-        persons.stream().forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
-
+        persons
+                .stream()
+                .forEach(p -> p.add(linkTo(methodOn(PersonController.class).findById(p.getKey())).withSelfRel()));
         return persons;
     }
 
@@ -42,12 +42,14 @@ public class PersonServices {
 
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
-        PersonVO vo = DozerMapper.parseObject(entity, PersonVO.class);
+        var vo = DozerMapper.parseObject(entity, PersonVO.class);
         vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
         return vo;
     }
 
     public PersonVO create(PersonVO person) {
+
+        if (person == null) throw new RequiredObjectIsNullException();
 
         logger.info("Creating one person!");
         var entity = DozerMapper.parseObject(person, Person.class);
@@ -57,6 +59,8 @@ public class PersonServices {
     }
 
     public PersonVO update(PersonVO person) {
+
+        if (person == null) throw new RequiredObjectIsNullException();
 
         logger.info("Updating one person!");
 

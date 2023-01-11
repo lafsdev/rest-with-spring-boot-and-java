@@ -31,7 +31,7 @@ public class PersonVO extends RepresentationModel<PersonVO> implements Serializa
         return key;
     }
 
-    public void setId(Long id) {
+    public void setKey(Long id) {
         this.key = key;
     }
 
